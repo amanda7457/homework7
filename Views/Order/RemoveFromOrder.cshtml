@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HW7_Barron_Amanda.Models.OrderDetail>
+@{
+    ViewBag.Title = "RemoveFromOrder";
+}
+<h2>Edit Order</h2>
+<table class="table">
+    <tr>
+        <th>
+            Product Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtendedPrice)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtendedPrice)
+            </td>
+            <td>
+                @*might have to be singular OrderDetail below - just check*@
+                @Html.ActionLink("Edit", "Edit", "OrderDetail", new { id = item.OrderDetailID }, null) |
+                @Html.ActionLink("Delete", "Delete", "OrderDetail", new { id = item.OrderDetailID }, null)
+            </td>
+        </tr>
+    }
+</table>

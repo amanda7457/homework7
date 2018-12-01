@@ -1,0 +1,61 @@
+@model HW7_Barron_Amanda.Models.Product
+@using HW7_Barron_Amanda.Models
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SKU)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SKU)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <table class="table table-hover table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Suppliers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ProductSupplier cd in Model.ProductSuppliers)
+            {
+                <tr>
+                    <td>@cd.Supplier.SupplierName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ProductID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

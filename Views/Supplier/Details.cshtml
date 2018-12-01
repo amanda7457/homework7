@@ -1,0 +1,77 @@
+@model HW7_Barron_Amanda.Models.Supplier
+@using HW7_Barron_Amanda.Models
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Supplier</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplierName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SupplierName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplierEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SupplierEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstablishedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstablishedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PreferredSupplier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PreferredSupplier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <table class="table table-hover table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ProductSupplier cd in Model.ProductSuppliers)
+            {
+                <tr>
+                    <td>@cd.Product.ProductName</td>
+                    <td>@cd.Product.ProductPrice</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SupplierID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
